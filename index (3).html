@@ -1,0 +1,3680 @@
+<!DOCTYPE html>
+<html lang="th" data-lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>TEAM WINTER TREND</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Sarabun:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════════
+   KEYFRAMES
+══════════════════════════════════════════════ */
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spinSlow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes snowFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: .4;
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(180deg);
+        opacity: .7;
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      70% {
+        transform: scale(1.06);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+   ROOT TOKENS — BLUE MINIMAL THEME
+══════════════════════════════════════════════ */
+    :root {
+      /* pastel blue */
+      --sky0: #f5faff;
+      --sky1: #e8f4fd;
+      --sky2: #cce8f9;
+      --sky3: #9ed4f5;
+      --sky4: #6bbde8;
+      --sky5: #4aaad8;
+      /* pastel pink */
+      --rose0: #fff5f8;
+      --rose1: #fde8ef;
+      --rose2: #fbc9d9;
+      --rose3: #f5a0be;
+      --rose4: #e8799e;
+      --rose5: #d95f87;
+      /* neutral */
+      --white: #ffffff;
+      --off-white: #fdfafc;
+      --text: #3d3550;
+      --text-mid: #7b6e8a;
+      --text-soft: #b0a4bc;
+      /* semantic */
+      --bg: #fdf6fa;
+      --surface: #ffffff;
+      --border: #f0d8e8;
+      --border-blue: #d0e9f8;
+      --shadow: rgba(200, 150, 180, 0.13);
+      --shadow-deep: rgba(160, 100, 140, 0.15);
+      /* accent shortcuts */
+      --accent-blue: var(--sky5);
+      --accent-pink: var(--rose5);
+      --accent-blue-l: var(--sky3);
+      --accent-pink-l: var(--rose3);
+      /* chip colors */
+      --kw-bg: var(--sky1);
+      --kw-fg: var(--sky5);
+      --kw-sel: var(--sky5);
+      --ht-bg: var(--rose1);
+      --ht-fg: var(--rose5);
+      --ht-sel: var(--rose5);
+      --mt-bg: #f0eaff;
+      --mt-fg: #8a6cc4;
+      --mt-sel: #8a6cc4;
+      --mint: #5bc9a8;
+      --mint-light: #d8f5ec;
+      --r: 18px;
+      --r-sm: 12px;
+      --r-xs: 8px;
+      --nav-h: 62px;
+    }
+
+    /* ══════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Quicksand', 'Sarabun', sans-serif;
+      font-weight: 500;
+      max-width: 480px;
+      margin: 0 auto;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    @media(min-width:480px) {
+      body {
+        max-width: 600px;
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+   TOP HEADER
+══════════════════════════════════════════════ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 10px;
+      gap: 10px;
+    }
+
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      flex-shrink: 0;
+    }
+
+    .header-brand-team {
+      font-family: 'Nunito', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    .header-brand-main {
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .logo-snow {
+      display: inline-block;
+      animation: spinSlow 8s linear infinite;
+      -webkit-text-fill-color: var(--sky4);
+    }
+
+    .header-title {
+      flex: 1;
+      text-align: center;
+    }
+
+    .header-title-main {
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      background: var(--sky1);
+      border-radius: 30px;
+      padding: 4px;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .lang-opt {
+      padding: 5px 10px;
+      border-radius: 26px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-soft);
+      transition: all .25s;
+    }
+
+    .lang-opt.active {
+      background: var(--surface);
+      color: var(--rose5);
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    /* ══════════════════════════════════════════════
+   BOTTOM NAV
+══════════════════════════════════════════════ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(18px);
+      border-top: 1.5px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 300;
+      padding: 6px 8px 10px;
+      box-shadow: 0 -4px 20px rgba(37, 99, 184, .10);
+    }
+
+    @media(min-width:480px) {
+      .bottom-nav {
+        max-width: 600px;
+      }
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 4px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all .22s ease;
+      -webkit-tap-highlight-color: transparent;
+      border: none;
+      background: transparent;
+    }
+
+    .nav-item:hover {
+      background: var(--sky1);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+      transition: transform .2s;
+    }
+
+    .nav-item.active .nav-icon {
+      transform: translateY(-2px) scale(1.1);
+    }
+
+    .nav-label {
+      font-size: 9px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-soft);
+      transition: color .2s;
+      letter-spacing: .04em;
+    }
+
+    .nav-item.active .nav-label {
+      color: var(--rose5);
+    }
+
+    .page-wrap {
+      padding-bottom: calc(var(--nav-h) + 16px);
+    }
+
+    /* ══════════════════════════════════════════════
+   PAGES
+══════════════════════════════════════════════ */
+    .page {
+      display: none;
+      animation: pageIn .3s ease forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════════
+   SECTION LABEL
+══════════════════════════════════════════════ */
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 18px 10px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--rose2), var(--sky2), transparent);
+    }
+
+    /* ══════════════════════════════════════════════
+   PAGE 0: HOME
+══════════════════════════════════════════════ */
+    .home-banner-section {
+      padding: 18px 16px 8px;
+      animation: fadeIn 0.6s ease both;
+    }
+
+    .home-banner {
+      width: 100%;
+      border-radius: var(--r);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #b8dcf5 0%, #d4ecf9 40%, #f9d0e2 70%, #fce8f0 100%);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+
+    .home-banner::before {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(180, 220, 245, 0.5), transparent 70%);
+      top: -60px;
+      right: -60px;
+    }
+
+    .home-banner::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 180, 210, 0.45), transparent 70%);
+      bottom: -50px;
+      left: -30px;
+    }
+
+    .home-banner-inner {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .home-banner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 30px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--rose5);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      font-family: 'Nunito', sans-serif;
+      animation: bounceIn 0.6s ease 0.2s both;
+    }
+
+    .home-banner-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 8px;
+      animation: fadeIn 0.7s ease 0.3s both;
+    }
+
+    .home-banner-title span {
+      display: block;
+      background: linear-gradient(120deg, var(--rose4) 0%, var(--sky4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .home-banner-subtitle {
+      font-size: 13px;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+      animation: fadeIn 0.7s ease 0.4s both;
+    }
+
+    .home-banner-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeIn 0.7s ease 0.5s both;
+    }
+
+    .home-banner-tag {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-mid);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .home-snow {
+      position: absolute;
+      font-size: 16px;
+      opacity: 0.4;
+      animation: snowFloat linear infinite;
+      z-index: 1;
+      color: var(--rose3);
+    }
+
+    .hs1 {
+      top: 10%;
+      left: 8%;
+      animation-duration: 5s;
+    }
+
+    .hs2 {
+      top: 20%;
+      right: 10%;
+      animation-duration: 7s;
+      animation-delay: 1s;
+      font-size: 10px;
+    }
+
+    .hs3 {
+      bottom: 20%;
+      left: 15%;
+      animation-duration: 6s;
+      animation-delay: 2s;
+      font-size: 12px;
+    }
+
+    .hs4 {
+      bottom: 10%;
+      right: 8%;
+      animation-duration: 8s;
+      animation-delay: 0.5s;
+    }
+
+    /* Profile card */
+    .home-profile-section {
+      padding: 0 16px 8px;
+      animation: fadeIn 0.7s ease 0.15s both;
+    }
+
+    .home-profile-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 24px 20px;
+      box-shadow: 0 4px 24px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+    }
+
+    .home-profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(135deg, var(--sky1) 0%, var(--rose1) 100%);
+      z-index: 0;
+    }
+
+    .home-avatar-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+    }
+
+    .home-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky3) 0%, var(--rose3) 100%);
+      border: 4px solid var(--surface);
+      box-shadow: 0 4px 18px var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .home-verified {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: var(--surface);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+
+    .home-profile-info {
+      z-index: 1;
+      text-align: center;
+    }
+
+    .home-profile-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .home-profile-handle {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .home-profile-bio {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .home-followers-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      gap: 0;
+      border-top: 1.5px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .home-follower-stat {
+      text-align: center;
+      padding: 0 8px;
+      border-right: 1.5px solid var(--border);
+    }
+
+    .home-follower-stat:last-child {
+      border-right: none;
+    }
+
+    .home-follower-number {
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .home-follower-label {
+      font-size: 10.5px;
+      color: var(--text-soft);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .home-platform-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .home-platform-tag {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-mid);
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .home-platform-tag:hover {
+      background: var(--sky1);
+      color: var(--rose5);
+      border-color: var(--sky3);
+      transform: translateY(-2px);
+    }
+
+    .home-follow-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(120deg, var(--rose4) 0%, var(--sky4) 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 16px rgba(220, 120, 160, 0.28);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .home-follow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(220, 120, 160, 0.38);
+    }
+
+    /* Quick menu */
+    .home-quickmenu-section {
+      padding: 0 16px 24px;
+      animation: fadeIn 0.7s ease 0.3s both;
+    }
+
+    .home-quickmenu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .quick-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 20px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 3px 16px var(--shadow);
+      border: 1.5px solid transparent;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border);
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+
+    .qc-1 {
+      background: linear-gradient(135deg, #fdf0f6 0%, #fde8ef 100%);
+    }
+
+    .qc-2 {
+      background: linear-gradient(135deg, #eef7fd 0%, #fdf5f9 100%);
+    }
+
+    .qc-3 {
+      background: linear-gradient(135deg, #f5fbff 0%, #e8f4fd 100%);
+    }
+
+    .qc-4 {
+      background: linear-gradient(135deg, #fdf0f6 0%, #eef7fd 100%);
+    }
+
+    .quick-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .qi-1 {
+      background: linear-gradient(135deg, var(--rose2), var(--rose3));
+    }
+
+    .qi-2 {
+      background: linear-gradient(135deg, var(--sky2), var(--sky3));
+    }
+
+    .qi-3 {
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+    }
+
+    .qi-4 {
+      background: linear-gradient(135deg, var(--rose1), var(--rose2));
+    }
+
+    .quick-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .quick-desc {
+      font-size: 11.5px;
+      color: var(--text-soft);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .quick-arrow {
+      align-self: flex-end;
+      font-size: 16px;
+      color: var(--text-soft);
+      transition: transform 0.2s;
+    }
+
+    .quick-card:hover .quick-arrow {
+      transform: translateX(4px);
+      color: var(--rose5);
+    }
+
+    /* ══════════════════════════════════════════════
+   BANNER (pages 1-3)
+══════════════════════════════════════════════ */
+    .banner-section {
+      padding: 16px 16px 0;
+    }
+
+   .banner-wrap {
+    width: 100%;
+    border-radius: var(--r);
+   overflow: hidden;
+   position: relative;        /* ← มีอยู่แล้ว ไม่ต้องแก้ */
+   aspect-ratio: unset;       /* ← แก้จาก 16/7 เป็น unset */
+   box-shadow: 0 6px 28px var(--shadow-deep);
+   background-size: cover;    /* ← ไม่มีผลแล้ว แต่ทิ้งไว้ได้ */
+   background-position: center;
+   background-repeat: no-repeat;
+   transition: background-image .3s ease;
+     }
+
+    .banner-wrap-magic {
+      background: linear-gradient(135deg, #b8dcf5 0%, #daeef9 40%, #f9d4e5 80%, #fce8f0 100%);
+    }
+
+    .banner-wrap-social {
+      background: linear-gradient(135deg, #d4ecf9 0%, #c0e2f7 40%, #fce0ec 80%, #fde8f3 100%);
+    }
+
+    .banner-wrap-forward {
+      background: linear-gradient(135deg, #fde8f3 0%, #f9d4e5 40%, #cce8f9 80%, #e8f4fd 100%);
+    }
+
+    .banner-ph-icon {
+      font-size: 32px;
+      opacity: .7;
+    }
+
+    .banner-ph-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-mid);
+      font-family: 'Nunito', sans-serif;
+    }
+
+   .banner-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;  /* ← ข้อความอยู่ด้านล่าง */
+  background: linear-gradient(to top, rgba(100, 60, 90, .35) 0%, transparent 60%);
+  padding: 16px;
+  pointer-events: none;
+}
+
+    .banner-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      text-shadow: 0 1px 8px rgba(255, 255, 255, .6);
+      letter-spacing: .04em;
+      text-align: center;
+    }
+
+    /* .banner-sub removed */
+    .banner-snow {
+      position: absolute;
+      font-size: 16px;
+      opacity: .3;
+      animation: snowFloat linear infinite;
+      pointer-events: none;
+      z-index: 1;
+      color: var(--rose3);
+    }
+
+    .bs1 {
+      top: 12%;
+      left: 6%;
+      animation-duration: 5s;
+    }
+
+    .bs2 {
+      top: 18%;
+      right: 9%;
+      animation-duration: 7s;
+      animation-delay: 1s;
+      font-size: 10px;
+    }
+
+    .bs3 {
+      bottom: 22%;
+      left: 12%;
+      animation-duration: 6s;
+      animation-delay: 2s;
+    }
+
+    .banner-change-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--rose5);
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+      transition: all .2s;
+      z-index: 10;
+    }
+
+    .banner-change-btn:hover {
+      background: rgba(255, 255, 255, .95);
+      transform: scale(1.04);
+    }
+
+    /* ══════════════════════════════════════════════
+   SHARED CARD
+══════════════════════════════════════════════ */
+    .content-section {
+      padding: 0 16px 28px;
+    }
+
+    .content-card,
+    .form-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 20px 18px;
+      box-shadow: 0 4px 24px var(--shadow);
+      border: 1.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ══════════════════════════════════════════════
+   PAGE 1: MAGIC TREND
+══════════════════════════════════════════════ */
+    .sel-group {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .sel-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .sh-kw {
+      color: var(--rose5);
+    }
+
+    .sh-ht {
+      color: var(--rose5);
+    }
+
+    .sh-mt {
+      color: #8a6cc4;
+    }
+
+    .sel-badge {
+      margin-left: auto;
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      background: var(--sky1);
+      color: var(--rose5);
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 12.5px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all .2s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chip-kw {
+      background: var(--kw-bg);
+      color: var(--kw-fg);
+    }
+
+    .chip-kw:hover:not(.disabled):not(.loading-chip) {
+      background: var(--kw-sel);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 184, .25);
+    }
+
+    .chip-kw.selected {
+      background: var(--kw-sel);
+      color: #fff;
+      border-color: var(--kw-sel);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 184, .3);
+    }
+
+    .chip-kw.loading-chip {
+      pointer-events: none;
+      opacity: .75;
+    }
+
+    .chip-kw.disabled {
+      opacity: .32;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .chip-ht {
+      background: var(--ht-bg);
+      color: var(--ht-fg);
+    }
+
+    .chip-ht:hover {
+      background: var(--ht-sel);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 64, 128, .25);
+    }
+
+    .chip-ht.selected {
+      background: var(--ht-sel);
+      color: #fff;
+      border-color: var(--ht-sel);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 64, 128, .3);
+    }
+
+    .chip-mt {
+      background: var(--mt-bg);
+      color: var(--mt-fg);
+    }
+
+    .chip-mt:hover {
+      background: var(--mt-sel);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 214, .25);
+    }
+
+    .chip-mt.selected {
+      background: var(--mt-sel);
+      color: #fff;
+      border-color: var(--mt-sel);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 214, .3);
+    }
+
+    .chip-spinner {
+      width: 11px;
+      height: 11px;
+      border: 2px solid rgba(37, 99, 184, .3);
+      border-top-color: var(--rose5);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, var(--rose2), var(--sky2), transparent);
+      margin: 2px 0;
+    }
+
+    .textbox-wrap {
+      position: relative;
+    }
+
+    .result-box {
+      width: 100%;
+      min-height: 150px;
+      padding: 14px 14px 28px;
+      border-radius: var(--r-sm);
+      border: 2px solid var(--border);
+      background: linear-gradient(135deg, var(--sky0) 0%, var(--rose0) 100%);
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text);
+      font-family: 'Quicksand', 'Sarabun', sans-serif;
+      font-weight: 600;
+      resize: vertical;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .result-box:focus {
+      border-color: var(--rose5);
+    }
+
+    .result-box::placeholder {
+      color: var(--text-soft);
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .char-count {
+      position: absolute;
+      bottom: 9px;
+      right: 12px;
+      font-size: 10px;
+      color: var(--text-soft);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .btn-row {
+      display: grid;
+      gap: 8px;
+    }
+
+    .btn-row.c1 {
+      grid-template-columns: 1fr;
+    }
+
+    .btn-row.c2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-row.c3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .btn-row.c4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .btn {
+      padding: 11px 8px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: .03em;
+      transition: all .22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-run {
+      padding: 14px;
+      background: linear-gradient(120deg, var(--rose4) 0%, var(--sky4) 100%);
+      color: #fff;
+      font-size: 14.5px;
+      box-shadow: 0 4px 16px rgba(220, 120, 160, .28);
+    }
+
+    .btn-run:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(220, 120, 160, .38);
+    }
+
+    .btn-run:active {
+      transform: scale(.97);
+    }
+
+    .btn-run:disabled {
+      opacity: .65;
+      transform: none;
+      cursor: not-allowed;
+    }
+
+    .btn-new {
+      background: linear-gradient(120deg, var(--sky1), var(--sky2));
+      color: var(--sky5);
+    }
+
+    .btn-new:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-copy {
+      background: linear-gradient(120deg, var(--sky1), var(--rose1));
+      color: var(--rose5);
+    }
+
+    .btn-copy:hover {
+      transform: translateY(-2px);
+      background: var(--rose4);
+      color: #fff;
+    }
+
+    .btn-clear {
+      background: #fdf6fa;
+      color: var(--text-soft);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-clear:hover {
+      background: var(--sky1);
+    }
+
+    /* Twitter / Post to X button */
+    .btn-tweet {
+      background: linear-gradient(120deg, #2a2a3e 0%, #1a1a2e 100%);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 14px rgba(30, 30, 60, 0.22);
+    }
+
+    .btn-tweet:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 30, 60, 0.32);
+      background: linear-gradient(120deg, #333345, #1a1a2e);
+    }
+
+    .btn-tweet:active {
+      transform: scale(.97);
+    }
+
+    .x-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .x-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .tweet-note {
+      font-size: 10.5px;
+      color: var(--text-soft);
+      text-align: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      background: var(--sky0);
+      border-radius: var(--r-xs);
+      padding: 7px 10px;
+      border: 1px solid var(--border-blue);
+    }
+
+    .btn-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, .4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+
+    /* ══════════════════════════════════════════════
+   PAGE 2: SOCIAL MEDIA
+══════════════════════════════════════════════ */
+    .summary-section {
+      padding: 0 16px 4px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .sum-card {
+      background: var(--surface);
+      border-radius: var(--r-sm);
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: 0 3px 12px var(--shadow);
+      border: 1.5px solid transparent;
+      transition: all .22s;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .sum-card:hover,
+    .sum-card.active {
+      border-color: var(--border);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px var(--shadow);
+    }
+
+    .sum-card.active {
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+    }
+
+    .sum-icon {
+      font-size: 20px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .sum-num {
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .sum-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-soft);
+      letter-spacing: .06em;
+      font-family: 'Nunito', sans-serif;
+      margin-top: 2px;
+    }
+
+    .sum-done {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--mint);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .filter-section {
+      padding: 10px 16px 0;
+    }
+
+    .filter-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 9px 6px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      transition: all .2s;
+      -webkit-tap-highlight-color: transparent;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 3px 10px rgba(37, 99, 184, .25);
+      transform: translateY(-1px);
+    }
+
+    .filter-btn .fbadge {
+      background: rgba(255, 255, 255, .25);
+      border-radius: 8px;
+      padding: 1px 4px;
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .filter-btn:not(.active) .fbadge {
+      background: var(--sky1);
+      color: var(--rose5);
+    }
+
+    .filter-btn-all {
+      grid-column: 1 / -1;
+      padding: 9px 4px;
+      font-size: 12px;
+    }
+
+    .feed-section {
+      padding: 0 16px 4px;
+    }
+
+    .feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .post-card {
+      background: var(--surface);
+      border-radius: var(--r-sm);
+      padding: 12px 14px;
+      box-shadow: 0 2px 10px var(--shadow);
+      border: 1.5px solid var(--border);
+      transition: all .25s;
+    }
+
+    .post-card:hover {
+      border-color: var(--sky3);
+      transform: translateY(-1px);
+    }
+
+    .post-card.checked {
+      opacity: .5;
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border-color: #a7f3d0;
+    }
+
+    .post-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .post-thumb-placeholder {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .post-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .post-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .post-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .post-label {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .post-label.label-done {
+      text-decoration: line-through;
+      color: var(--text-soft);
+    }
+
+    .post-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--sky1);
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .post-link-btn:hover {
+      background: var(--rose4);
+      transform: scale(1.08);
+    }
+
+    .post-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      border: 2.5px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all .2s;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .post-checkbox.done {
+      background: var(--mint);
+      border-color: var(--mint);
+      color: #fff;
+    }
+
+    .focus-section {
+      padding: 0 16px 4px;
+    }
+
+    .focus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .focus-card {
+      background: linear-gradient(135deg, var(--sky0) 0%, var(--rose0) 100%);
+      border-radius: var(--r-sm);
+      padding: 14px;
+      box-shadow: 0 3px 14px var(--shadow);
+      border: 1.5px solid var(--border);
+      transition: all .25s;
+    }
+
+    .focus-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 20px var(--shadow);
+    }
+
+    .focus-card.checked {
+      opacity: .5;
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border-color: #a7f3d0;
+    }
+
+    .focus-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      color: #fff;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 9px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+
+    .focus-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .focus-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1.5px solid var(--border);
+    }
+
+    .focus-img-placeholder {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .focus-titles {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .focus-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .focus-title.done {
+      text-decoration: line-through;
+      color: var(--text-soft);
+    }
+
+    .focus-subtitle {
+      font-size: 11.5px;
+      color: var(--text-mid);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .focus-right {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      margin-left: 4px;
+    }
+
+    .focus-bottom {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px dashed var(--border);
+      flex-wrap: wrap;
+    }
+
+    .focus-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-mid);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .p-ig {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+    }
+
+    .p-tt {
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+    }
+
+    .p-tw {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    }
+
+    .p-fb {
+      background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    }
+
+    .p-yt {
+      background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    }
+
+    .p-art {
+      background: linear-gradient(135deg, var(--rose1), var(--sky1));
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--sky1) 25%, var(--rose1) 50%, var(--sky1) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+    }
+
+    .skel-card {
+      background: var(--surface);
+      border-radius: var(--r-sm);
+      padding: 14px;
+      box-shadow: 0 3px 14px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text-soft);
+    }
+
+    .empty-state-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+      opacity: .5;
+    }
+
+    .empty-state-text {
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* MEME POPUP */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 22, 40, .75);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup-box {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 28px 24px;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 16px 50px var(--shadow-deep);
+      transform: scale(.85) translateY(20px);
+      transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+      position: relative;
+    }
+
+    .popup-overlay.show .popup-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .popup-confetti {
+      font-size: 28px;
+      margin-bottom: 10px;
+      animation: bounce .5s ease infinite alternate;
+    }
+
+    .popup-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    .popup-subtitle {
+      font-size: 12px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .popup-meme {
+      width: 100%;
+      border-radius: 16px;
+      max-height: 220px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+      min-height: 120px;
+    }
+
+    .popup-meme-emoji {
+      width: 100%;
+      border-radius: 16px;
+      min-height: 120px;
+      max-height: 180px;
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      margin-bottom: 16px;
+    }
+
+    .popup-close-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(37, 99, 184, .30);
+      transition: all .2s;
+    }
+
+    .popup-close-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ══════════════════════════════════════════════
+   PAGE 3: FORWARD
+══════════════════════════════════════════════ */
+    .form-section {
+      padding: 0 16px 28px;
+    }
+
+    .form-card {
+      padding: 22px 20px;
+      gap: 20px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-family: 'Nunito', sans-serif;
+      color: var(--rose5);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .field-label span {
+      font-size: 14px;
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--r-sm);
+      border: 1.5px solid var(--border);
+      background: linear-gradient(135deg, var(--sky0), var(--rose0));
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      font-family: 'Quicksand', 'Sarabun', sans-serif;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+    }
+
+    .field-input:focus {
+      border-color: var(--rose5);
+      box-shadow: 0 0 0 3px rgba(37, 99, 184, .10);
+    }
+
+    .field-input::placeholder {
+      color: var(--text-soft);
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .field-textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .char-hint {
+      font-size: 9.5px;
+      color: var(--text-soft);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .cat-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: var(--r-sm);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      transition: all .2s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .cat-chip:hover {
+      border-color: var(--sky3);
+      background: var(--sky1);
+    }
+
+    .cat-chip.selected {
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      border-color: transparent;
+      box-shadow: 0 3px 12px rgba(37, 99, 184, .25);
+    }
+
+    .cat-chip input[type="checkbox"] {
+      display: none;
+    }
+
+    .cat-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+
+    .cat-chip.selected .cat-check {
+      background: rgba(255, 255, 255, .3);
+      border-color: rgba(255, 255, 255, .5);
+      color: #fff;
+    }
+
+    .cat-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-mid);
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .2s;
+    }
+
+    .cat-chip.selected .cat-label {
+      color: #fff;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(120deg, var(--rose4) 0%, var(--sky4) 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: all .25s ease;
+      box-shadow: 0 4px 18px rgba(220, 120, 160, .28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(220, 120, 160, .38);
+    }
+
+    .btn-submit:active {
+      transform: scale(.97);
+    }
+
+    .btn-submit:disabled {
+      opacity: .65;
+      transform: none;
+      cursor: not-allowed;
+    }
+
+    .btn-submit .btn-spinner {
+      width: 16px;
+      height: 16px;
+      border-width: 2.5px;
+    }
+
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 28px 16px;
+      animation: fadeUp .5s ease forwards;
+    }
+
+    .success-box.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .success-icon {
+      font-size: 52px;
+      animation: popIn .5s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .success-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .success-sub {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .btn-reset {
+      margin-top: 8px;
+      padding: 11px 28px;
+      border-radius: 30px;
+      border: none;
+      background: var(--sky1);
+      color: var(--rose5);
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-reset:hover {
+      background: var(--rose4);
+      color: #fff;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, var(--sky1), var(--rose1));
+      border-radius: var(--r-sm);
+      padding: 14px 16px;
+      border: 1.5px dashed var(--rose3);
+      font-size: 11.5px;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .info-box strong {
+      color: var(--rose5);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ══════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: calc(var(--nav-h) + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #4a3a5a;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 12.5px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      box-shadow: 0 4px 20px rgba(80, 50, 100, .2);
+      z-index: 999;
+      opacity: 0;
+      transition: all .35s cubic-bezier(.34, 1.56, .64, 1);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+    footer {
+      background: var(--surface);
+      border-top: 1.5px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .footer-logo {
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-by {
+      font-size: 11px;
+      color: var(--text-soft);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .footer-by a {
+      color: var(--rose5);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer-hearts {
+      margin-top: 8px;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      opacity: 0.5;
+    }
+
+    /* banner with image overrides gradient */
+    .banner-wrap.has-bg-image .banner-snow {
+      display: none;
+    }
+
+    .banner-wrap.has-bg-image .banner-overlay {
+      background: linear-gradient(to top, rgba(20, 10, 30, .45) 0%, transparent 55%);
+    }
+
+    .banner-wrap.has-bg-image .banner-title {
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+    }
+    #bwForward .banner-title {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .3);
+}
+
+    /* ══════════════════════════════════════════════
+   LOADING POPUP
+══════════════════════════════════════════════ */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 700;
+      background: rgba(253, 246, 250, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+
+    .loading-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .loading-box {
+      background: #fff;
+      border: 1.5px solid var(--rose2);
+      border-radius: 28px;
+      padding: 36px 32px 30px;
+      max-width: 300px;
+      width: 85%;
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(200, 130, 170, 0.18);
+      transform: scale(.88) translateY(16px);
+      transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .loading-overlay.show .loading-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Spinner ring */
+    .loading-ring {
+      width: 58px;
+      height: 58px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .loading-ring::before,
+    .loading-ring::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    .loading-ring::before {
+      border: 3px solid var(--rose1);
+    }
+
+    .loading-ring::after {
+      border: 3px solid transparent;
+      border-top-color: var(--rose4);
+      border-right-color: var(--sky4);
+      animation: spin .9s linear infinite;
+    }
+
+    .loading-ring-inner {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-bottom-color: var(--rose3);
+      animation: spin .6s linear infinite reverse;
+    }
+
+    .loading-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      animation: bounce .7s ease-in-out infinite alternate;
+    }
+
+    .loading-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      background: linear-gradient(120deg, var(--rose4), var(--sky4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+    }
+
+    .loading-sub {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.6;
+    }
+
+    .loading-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .loading-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rose3);
+      animation: dotPulse 1.2s ease-in-out infinite;
+    }
+
+    .loading-dot:nth-child(1) {
+      animation-delay: 0s;
+      background: var(--rose3);
+    }
+
+    .loading-dot:nth-child(2) {
+      animation-delay: .2s;
+      background: var(--sky3);
+    }
+
+    .loading-dot:nth-child(3) {
+      animation-delay: .4s;
+      background: var(--rose2);
+    }
+
+    @keyframes dotPulse {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(1);
+        opacity: .5;
+      }
+
+      40% {
+        transform: scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    /* progress bar */
+    .loading-bar-wrap {
+      width: 100%;
+      background: var(--rose1);
+      border-radius: 30px;
+      height: 5px;
+      overflow: hidden;
+    }
+
+    .loading-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose3), var(--sky4), var(--rose3));
+      background-size: 200% 100%;
+      animation: shimmer 1.4s linear infinite;
+      border-radius: 30px;
+      width: 0%;
+      transition: width .4s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ══ TOP HEADER ══ -->
+  <header>
+    <div class="header-top">
+      <div class="header-brand">
+        <span class="header-brand-team">TEAM</span>
+        <span class="header-brand-main"><span class="logo-snow">❄</span> WINTER TREND</span>
+      </div>
+      <div class="header-title">
+        <div class="header-title-main" id="headerTitle"><i class="fa-solid fa-house" style="color: rgb(127, 197, 255);"></i> หน้าหลัก</div>
+      </div>
+      <div class="lang-btn" onclick="toggleLang()">
+        <span class="lang-opt active" id="lth">TH</span>
+        <span class="lang-opt" id="len">EN</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE 0 — HOME -->
+  <div class="page page-wrap active" id="page-home">
+    <section class="home-banner-section">
+      <div class="home-banner">
+        <div class="home-snow hs1">❄</div>
+        <div class="home-snow hs2">❅</div>
+        <div class="home-snow hs3">✦</div>
+        <div class="home-snow hs4">❆</div>
+        <div class="home-banner-inner">
+          <div class="home-banner-badge">
+            ❄ <span data-th="สำหรับแฟนคลับน้องหนาว" data-en="FOR WINTER FANCLUB">สำหรับแฟนคลับน้องหนาว</span>
+          </div>
+          <div class="home-banner-title">
+            <span class="home-banner-title-name">TEAM WINTER TREND</span>
+            <span style="font-size:16px;background:none;-webkit-text-fill-color:rgba(255,255,255,0.75);font-weight:700;" data-th="× NONGNAO NATION" data-en="× TEAM WINTER ">× NONGNAO NATION</span>
+          </div>
+          <div class="home-banner-tags">
+            <span class="home-banner-tag">WINTER</span>
+            <span class="home-banner-tag">น้องหนาว</span>
+            <span class="home-banner-tag">aespa</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <p class="sec-label">✦ <span data-th="PROFILE" data-en="Profile">PROFILE</span></p>
+    <section class="home-profile-section">
+      <div class="home-profile-card">
+        <div class="home-avatar">
+  <img src="https://img1.pic.in.th/images/BF.41710071.1.jpg" 
+       alt="imwinter" 
+       style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        <div class="home-verified">❄️</div>
+        </div>
+        <div class="home-profile-info">
+          <div class="home-profile-name">imwinter</div>
+          <div class="home-profile-handle">@imwinter · KIM MINJEONG</div>
+          <p class="home-profile-bio" data-th="น้องหนาว • เอสป้า ❄️" data-en="KIM MINJEONG • aespa member ❄️"> น้องหนาว • เอสป้า • คิม มินจอง ❄️</span>
+          </p>
+        </div>
+        <div class="home-platform-tags">
+          <a class="home-platform-tag" href="#">📸 Instagram</a>
+          <a class="home-platform-tag" href="#">🎵 TikTok</a>
+          <a class="home-platform-tag" href="#">▶️ YouTube</a>
+          <a class="home-platform-tag" href="#">🐦 X (Twitter)</a>
+        </div>
+
+    </section>
+    <p class="sec-label">✦ <span data-th="เมนู" data-en="Menu">เมนูลัด</span></p>
+    <section class="home-quickmenu-section">
+      <div class="home-quickmenu-grid">
+        <div class="quick-card qc-1" onclick="switchPage('magic',document.querySelector('[data-page=magic]'))">
+          <div class="quick-icon qi-1"><i class="fa-solid fa-wand-magic-sparkles" style="color: rgb(255, 235, 244);"></i> </div>
+          <div class="quick-title" data-th="Magic Trend" data-en="Magic Trend">Magic Trend</div>
+          <div class="quick-desc" data-th="เครื่องมือช่วยเทรนด์" data-en="Trending Tools">เครื่องมือช่วยเทรนด์</div>
+          <span class="quick-arrow">→</span>
+        </div>
+        <div class="quick-card qc-2" onclick="switchPage('social',document.querySelector('[data-page=social]'))">
+          <div class="quick-icon qi-2"> <i class="fa-solid fa-icons" style="color: rgb(0, 121, 210);"></i> </div>
+          <div class="quick-title" data-th="Social Media" data-en="Social Media">Social Media</div>
+          <div class="quick-desc" data-th="สื่อต่าง ๆ ที่เกี่ยวข้อง" data-en="Content about WINTER">สื่อต่าง ๆ ที่เกี่ยวข้อง</div>
+          <span class="quick-arrow">→</span>
+        </div>
+        <div class="quick-card qc-3" onclick="switchPage('social',document.querySelector('[data-page=social]'))">
+          <div class="quick-icon qi-3"><i class="fa-solid fa-folder-open" style="color: rgb(156, 212, 255);"></i></div>
+          <div class="quick-title" data-th="รออัพเดตในอนาคต" data-en="Coming Soon">รออัพเดตในอนาคต</div>
+          <div class="quick-desc" data-th="รออัพเดตในอนาคต" data-en="Coming Soon">รออัพเดตในอนาคต</div>
+          <span class="quick-arrow">→</span>
+        </div>
+        <div class="quick-card qc-4" onclick="switchPage('forward',document.querySelector('[data-page=forward]'))">
+          <div class="quick-icon qi-4"><i class="fa-solid fa-download" style="color: rgb(231, 159, 212);"></i></div>
+          <div class="quick-title" data-th="Forward" data-en="Forward">Forward</div>
+          <div class="quick-desc" data-th="สำหรับแฟนคลับส่งข้อมูลแหล่งข่าวต่าง ๆ" data-en="Send social update about Winter to admin">สำหรับแฟนคลับส่งข้อมูลแหล่งข่าวต่าง ๆ</div>
+          <span class="quick-arrow">→</span>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-logo">❄TEAM WINTER TREND❄</div>
+      <div class="footer-by">© <a href="#">TEAM WINTER TREND. All Rights Reserved.</a></div>
+      <div class="footer-hearts">💙 ❄️ 💙 ❄️ 💙</div>
+    </footer>
+  </div>
+
+  <!-- PAGE 1 — MAGIC TREND -->
+  <div class="page page-wrap" id="page-magic">
+    <section class="banner-section">
+      <div class="banner-wrap banner-wrap-magic" id="bwMagic">
+  <img src="https://img1.pic.in.th/images/Untitled-design-1.jpg" 
+       style="width:100%; height:auto; display:block; border-radius:var(--r);">
+  <div class="banner-snow bs1">❄</div>
+  <div class="banner-snow bs2">❅</div>
+  <div class="banner-snow bs3">✦</div>
+  <div class="banner-overlay">
+    <div class="banner-title">Magic Trend</div>
+  </div>
+</div>
+    </section>
+    <p class="sec-label">✨ <span data-th="Magic Trend Generator" data-en="Magic Trend Generator">Magic Trend Generator</span></p>
+    <section class="content-section">
+      <div class="content-card">
+        <div class="sel-group">
+          <div class="sel-header sh-kw">
+            <i class="fa-solid fa-key" style="color: rgb(254, 148, 226);"></i> #KEYWORD
+            <span class="sel-badge" data-th="เลือกได้สูงสุด 2" data-en="Max 2">เลือกได้สูงสุด 2</span>
+          </div>
+          <div class="chips-row">
+            <div class="chip chip-kw" data-kw="Perfect" onclick="toggleKw(this)">✨ Perfect</div>
+            <div class="chip chip-kw" data-kw="Fine" onclick="toggleKw(this)">🌸 Fine</div>
+            <div class="chip chip-kw" data-kw="Incredible" onclick="toggleKw(this)">💫 Incredible</div>
+            <div class="chip chip-kw" data-kw="Interesting" onclick="toggleKw(this)">🌟 Interesting</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="sel-group">
+          <div class="sel-header sh-ht"># HASHTAG & TAG LINE</div>
+          <div class="chips-row">
+            <div class="chip chip-ht" data-val="#PoloRalphLauren" onclick="toggleChip(this,'ht')">#PoloRalphLauren</div>
+            <div class="chip chip-ht" data-val="#RalphLauren" onclick="toggleChip(this,'ht')">#RalphLauren</div>
+            <div class="chip chip-ht" data-val="#WINTER" onclick="toggleChip(this,'ht')">#WINTER</div>
+            <div class="chip chip-ht" data-val="#NewBalance" onclick="toggleChip(this,'ht')">#NewBalance</div>
+            <div class="chip chip-ht" data-val="#EVENT" onclick="toggleChip(this,'ht')">#EVENT</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="sel-group">
+          <div class="sel-header sh-mt">@ MENTION</div>
+          <div class="chips-row">
+            <div class="chip chip-mt" data-val="@imwinter" onclick="toggleChip(this,'mt')">@imwinter</div>
+            <div class="chip chip-mt" data-val="@aespa_official" onclick="toggleChip(this,'mt')">@aespa_official</div>
+            <div class="chip chip-mt" data-val="@NewBalance" onclick="toggleChip(this,'mt')">@NewBalance</div>
+            <div class="chip chip-mt" data-val="@RalphLauren" onclick="toggleChip(this,'mt')">@RalphLauren</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="textbox-wrap">
+          <textarea class="result-box" id="resultBox" readonly placeholder="กด ✨ Run เพื่อสร้าง Magic Trend caption…&#10เลือก Keyword / Hashtag / Mention แล้วกด Run &#10&#10;Cilck✨Run to create Magic Trend caption...&#10Selecting Keyword / Hashtag / Mention then click Run"></textarea>
+          <div class="char-count" id="charCount">0</div>
+        </div>
+        <div class="btn-row c1">
+          <button class="btn btn-run" id="btnRun" onclick="runMagic()">
+            <span id="runIconWrap"><i class="fa-solid fa-splotch" style="color: rgb(255, 255, 255);"></i></span>
+            <span data-th="Run" data-en="Run">Run</span>
+          </button>
+        </div>
+        <div class="btn-row c3">
+          <button class="btn btn-new" onclick="runNew()">🔄 <span data-th="New!" data-en="New!">New!</span></button>
+          <button class="btn btn-copy" onclick="copyResult()">📋 <span data-th="Copy!" data-en="Copy!">Copy!</span></button>
+          <button class="btn btn-clear" onclick="clearAll()">🗑 <span data-th="Clear" data-en="Clear">Clear</span></button>
+        </div>
+        <div class="divider"></div>
+        <!-- ── POST TO TWITTER BUTTON ── -->
+        <div class="btn-row c1">
+          <button class="btn btn-tweet" onclick="postToTwitter()">
+            <span class="x-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </span>
+            <span data-th="โพสต์ไปที่ X (Twitter)" data-en="Post to X (Twitter)">โพสต์ไปที่ X (Twitter)</span>
+          </button>
+        </div>
+        <div class="tweet-note" id="tweetNote" data-th="💡 กด Run ก่อน แล้วกดปุ่มด้านบน — ระบบจะ Copy ข้อความพร้อมเปิด Twitter ให้อัตโนมัติ" data-en="💡 Run first, then tap above — text will be copied and Twitter will open automatically">
+          💡 กด Run ก่อน แล้วกดปุ่มด้านบน — ระบบจะ Copy ข้อความพร้อมเปิด Twitter ให้อัตโนมัติ
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-logo">❄ TEAM WINTER TREND</div>
+      <div class="footer-by">by <a href="#">@TEAMWINTERTREND</a></div>
+    </footer>
+  </div>
+
+  <!-- PAGE 2 — SOCIAL MEDIA -->
+  <div class="page page-wrap" id="page-social">
+    <section class="banner-section">
+     <div class="banner-wrap banner-wrap-social" id="bwSocial">
+  <img src="https://img1.pic.in.th/images/WINTER.jpg" 
+       style="width:100%; height:auto; display:block; border-radius:var(--r);">
+       <div class="banner-overlay">
+          <div class="banner-title">Social Media</div>
+        </div>
+      </div>
+    </section>
+    <div id="focusSection">
+      <p class="sec-label"><i class="fa-solid fa-fire" style="color: rgb(116, 192, 252);"></i></i><span data-th="Focus Posts" data-en="Focus Posts">Focus Posts</span></p>
+      <section class="focus-section">
+        <div class="focus-list" id="focusList"></div>
+      </section>
+    </div>
+    <p class="sec-label"><i class="fa-solid fa-list" style="color: rgb(116, 192, 252);"></i> <span data-th="สรุปภาพรวม" data-en="Summary">สรุปภาพรวม</span></p>
+    <section class="summary-section">
+      <div class="summary-grid" id="summaryGrid"></div>
+    </section>
+    <section class="filter-section">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn filter-btn-all active" data-filter="all" onclick="setFilter('all',this)">
+          🌟 <span data-th="ทั้งหมด" data-en="All">ทั้งหมด</span>
+        </button>
+        <button class="filter-btn" data-filter="ig" onclick="setFilter('ig',this)"><i class="fa-brands fa-instagram" style="color: rgb(255, 52, 140);"></i>Instagram</button>
+        <button class="filter-btn" data-filter="tt" onclick="setFilter('tt',this)"><i class="fa-brands fa-tiktok" style="color: rgb(33, 33, 33);"></i>TikTok</button>
+        <button class="filter-btn" data-filter="tw" onclick="setFilter('tw',this)"><i class="fa-brands fa-x-twitter" style="color: rgb(57, 57, 57);"></i>Twitter</button>
+        <button class="filter-btn" data-filter="fb" onclick="setFilter('fb',this)"><i class="fa-brands fa-facebook" style="color: rgb(62, 87, 248);"></i>Facebook</button>
+        <button class="filter-btn" data-filter="yt" onclick="setFilter('yt',this)"><i class="fa-brands fa-youtube" style="color: rgb(254, 29, 29);"></i>YouTube</button>
+        <button class="filter-btn" data-filter="art" onclick="setFilter('art',this)"><i class="fa-solid fa-newspaper" style="color: rgb(46, 166, 89);"></i>Article</button>
+      </div>
+    </section>
+    <p class="sec-label" id="feedLabel"><i class="fa-solid fa-clipboard-list" style="color: rgb(116, 192, 252);"></i> <span data-th="Check List ทั้งหมด" data-en="All Check List">Check List ทั้งหมด</span></p>
+    <section class="feed-section">
+      <div class="feed-list" id="feedList"></div>
+    </section>
+    <footer>
+      <div class="footer-logo">❄ TEAM WINTER TREND</div>
+      <div class="footer-by">by <a href="#">@TEAMWINTERTREND</a></div>
+    </footer>
+  </div>
+
+  <!-- PAGE 3 — FORWARD -->
+  <div class="page page-wrap" id="page-forward">
+    <section class="banner-section">
+      <div class="banner-wrap banner-wrap-forward" id="bwForward">
+          <img src="https://img1.pic.in.th/images/WINTER-1.jpg" 
+       style="width:100%; height:auto; display:block; border-radius:var(--r);">
+        <div class="banner-overlay">
+          <div class="banner-title">Forward</div>
+        </div>
+      </div>
+    </section>
+    <p class="sec-label">💌 <span data-th="ส่งข้อมูลถึงแอดมิน" data-en="Send to Admin">ส่งข้อมูลถึงแอดมิน</span></p>
+    <section class="form-section">
+      <div class="form-card">
+        <div class="success-box" id="successBox">
+          <div class="success-icon">🎉</div>
+          <div class="success-title" data-th="ส่งสำเร็จแล้ว!" data-en="Sent successfully!">ส่งสำเร็จแล้ว!</div>
+          <div class="success-sub" data-th="ขอบคุณที่ส่งข้อมูลมานะคะ 🤍 แอดมินจะรีบดูให้เร็วที่สุด" data-en="Thank you 🤍 Admin will review it shortly">
+            ขอบคุณที่ส่งข้อมูลมานะคะ 🤍<br>แอดมินจะรีบดูให้เร็วที่สุด
+          </div>
+          <button class="btn-reset" onclick="resetForm()">✉️ <span data-th="ส่งอีกครั้ง" data-en="Send another">ส่งอีกครั้ง</span></button>
+        </div>
+        <div id="formFields">
+          <div class="field-group">
+            <label class="field-label" for="senderName"><span>👤</span><span data-th="ชื่อผู้ส่ง" data-en="Your Name">ชื่อผู้ส่ง</span></label>
+            <input class="field-input" id="senderName" type="text" placeholder="@username twitter or nickname" maxlength="80" oninput="updateCharHint('senderName','nameHint',80)">
+            <div class="char-hint" id="nameHint">0 / 80</div>
+          </div>
+          <div class="divider"></div>
+          <div class="field-group">
+            <label class="field-label" for="msgText"><span>✉️</span><span data-th="ข้อความที่ต้องการส่ง" data-en="Your Message">ข้อความที่ต้องการส่ง</span></label>
+            <textarea class="field-input field-textarea" id="msgText" placeholder="พิมพ์ข้อความหรือลิงก์ที่ต้องการส่งให้แอดมินที่นี่…&#10Paste your link here." maxlength="1000" oninput="updateCharHint('msgText','msgHint',1000)"></textarea>
+            <div class="char-hint" id="msgHint">0 / 1,000</div>
+          </div>
+          <div class="divider"></div>
+          <div class="field-group">
+            <div class="field-label"><span>🏷️</span><span data-th="หมวดหมู่ (เลือกได้ 1 อย่าง)" data-en="Category (select one)">หมวดหมู่ (เลือกได้ 1 อย่าง)</span></div>
+            <div class="cat-grid">
+              <div class="cat-chip" onclick="toggleCat(this,'Instagram')"><input type="checkbox" value="Instagram">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-brands fa-instagram" style="color: rgb(13, 163, 230);"></i></i>Instagram</div>
+              </div>
+              <div class="cat-chip" onclick="toggleCat(this,'TikTok')"><input type="checkbox" value="TikTok">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-brands fa-tiktok" style="color: rgb(177, 151, 252);"></i>TikTok</div>
+              </div>
+              <div class="cat-chip" onclick="toggleCat(this,'Twitter')"><input type="checkbox" value="Twitter">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-brands fa-x-twitter" style="color: rgb(42, 42, 42);"></i>Twitter (X)</div>
+              </div>
+              <div class="cat-chip" onclick="toggleCat(this,'Facebook')"><input type="checkbox" value="Facebook">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-brands fa-facebook" style="color: rgb(63, 99, 239);"></i> Facebook</div>
+              </div>
+              <div class="cat-chip" onclick="toggleCat(this,'YouTube')"><input type="checkbox" value="YouTube">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-brands fa-youtube" style="color: rgb(244, 29, 29);"></i> YouTube</div>
+              </div>
+              <div class="cat-chip" onclick="toggleCat(this,'Article')"><input type="checkbox" value="Article">
+                <div class="cat-check"></div>
+                <div class="cat-label"><i class="fa-solid fa-newspaper" style="color: rgb(28, 182, 116);"></i> Article</div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
+            <span id="submitIconWrap"><i class="fa-solid fa-envelope-circle-check" style="color: rgb(255, 255, 255);"></i></span>
+            <span data-th="ส่งข้อมูลให้แอดมิน" data-en="Send to Admin">ส่งข้อมูลให้แอดมิน</span>
+          </button>
+          <div class="info-box">
+            💡 <strong data-th="หมายเหตุ" data-en="Note">หมายเหตุ</strong><br>
+            <span data-th="ข้อมูลจะถูกส่งไปยังแอดมินโดนตรงเพื่อนำมาอัพเดต อย่าลืมตรวจสอบความถูกต้องก่อนส่ง🌸" data-en="Your message will be saved directly to the admin. Please fill in all fields 🌸">
+              ข้อมูลจะถูกส่งไปยังแอดมินโดนตรงเพื่อนำมาอัพเดต อย่าลืมตรวจสอบความถูกต้องก่อนส่ง🌸
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-logo">❄ TEAM WINTER TREND</div>
+      <div class="footer-by">by <a href="#">@TEAMWINTERTREND</a></div>
+    </footer>
+  </div>
+
+  <!-- MEME POPUP -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <div class="popup-confetti" id="popupConfetti">🎉</div>
+      <div class="popup-title" id="popupTitle">ครบแล้ว!</div>
+      <div class="popup-subtitle" id="popupSubtitle">GoodJob ! Team Winter 💙</div>
+      <div id="popupMemeWrap">
+        <div class="popup-meme-emoji">🌨️</div>
+      </div>
+      <button class="popup-close-btn" onclick="closePopup()">
+        🌟 <span data-th="เยี่ยมมาก!" data-en="Amazing!">เยี่ยมมาก!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-page="home" onclick="switchPage('home',this)">
+      <span class="nav-icon"><i class="fa-solid fa-house-chimney" style="color: rgb(127, 198, 255);"></i></span>
+      <span class="nav-label" data-th="หน้าหลัก" data-en="Home">หน้าหลัก</span>
+    </button>
+    <button class="nav-item" data-page="magic" onclick="switchPage('magic',this)">
+      <span class="nav-icon"><i class="fa-solid fa-hat-wizard" style="color: rgb(127, 198, 255);"></i></span>
+      <span class="nav-label" data-th="Magic Trend" data-en="Magic">Magic Trend</span>
+    </button>
+    <button class="nav-item" data-page="social" onclick="switchPage('social',this)">
+      <span class="nav-icon"><i class="fa-solid fa-icons" style="color: rgb(127, 198, 255);"></i></span>
+      <span class="nav-label" data-th="Social" data-en="Social">Social</span>
+    </button>
+    <button class="nav-item" data-page="forward" onclick="switchPage('forward',this)">
+      <span class="nav-icon"><i class="fa-solid fa-envelope-circle-check" style="color: rgb(127, 198, 255);"></i></span>
+      <span class="nav-label" data-th="Forward" data-en="Forward">Forward</span>
+    </button>
+  </nav>
+
+  <script>
+    /* ─── PAGE CONFIGS ─── */
+    const PAGE_META = {
+      home: {
+        title: 'หน้าหลัก',
+        sub: 'TEAM WINTER TREND',
+        titleEn: 'Home',
+        subEn: 'TEAM WINTER TREND'
+      },
+      magic: {
+        title: 'Magic Trend',
+        sub: 'FOR WINTER',
+        titleEn: 'Magic Trend',
+        subEn: 'FOR WINTER'
+      },
+      social: {
+        title: 'Social Media',
+        sub: 'TEAM WINTER TREND',
+        titleEn: 'Social Media',
+        subEn: 'TEAM WINTER TREND'
+      },
+      forward: {
+        title: 'Forward',
+        sub: 'TEAM WINTER TREND',
+        titleEn: 'Forward',
+        subEn: 'TEAM WINTER TREND'
+      },
+    };
+    /* ─── SPA NAVIGATION ─── */
+    function switchPage(name, btn) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      const navBtn = btn && btn.classList.contains('nav-item') ? btn : document.querySelector(`.nav-item[data-page="${name}"]`);
+      if (navBtn) navBtn.classList.add('active');
+      const meta = PAGE_META[name];
+      const isEn = lang === 'en';
+      document.getElementById('headerTitle').textContent = isEn ? meta.titleEn : meta.title;
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      if (name === 'social' && !socialLoaded) {
+        socialLoaded = true;
+        loadAllSheets();
+      }
+    }
+    /* ─── LANGUAGE ─── */
+    let lang = 'th';
+
+    function toggleLang() {
+      lang = lang === 'th' ? 'en' : 'th';
+      document.getElementById('lth').classList.toggle('active', lang === 'th');
+      document.getElementById('len').classList.toggle('active', lang === 'en');
+      document.querySelectorAll('[data-th]').forEach(el => {
+        const v = el.getAttribute('data-' + lang);
+        if (v) {
+          if (el.tagName === 'P' || el.classList.contains('home-profile-bio')) {
+            el.innerHTML = v;
+          } else {
+            el.textContent = v;
+          }
+        }
+      });
+      const activePage = document.querySelector('.page.active');
+      if (activePage) {
+        const name = activePage.id.replace('page-', '');
+        const meta = PAGE_META[name];
+        if (meta) {
+          document.getElementById('headerTitle').textContent = lang === 'en' ? meta.titleEn : meta.title;
+          document.getElementById('headerSub').textContent = lang === 'en' ? meta.subEn : meta.sub;
+        }
+      }
+    }
+    /* ─── TOAST ─── */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(t._t);
+      t._t = setTimeout(() => t.classList.remove('show'), 2400);
+    }
+    /* ─── BANNER CONFIG ───────────────────────────────────────────────
+       วิธีใส่รูป: แทนที่ค่า '' ด้วย base64 string ของรูปภาพ
+       รูปแบบ: 'data:image/jpeg;base64,/9j/4AAQ...'
+       หรือ URL ของรูปภาพ เช่น 'https://example.com/banner.jpg'
+       ถ้าเว้นว่างไว้ ( '' ) จะแสดงพื้นหลัง gradient เดิม
+    ─────────────────────────────────────────────────────────────── */
+    const BANNER_IMAGES = {
+      magic: 'https://img1.pic.in.th/images/Untitled-design.jpg', //https://drive.google.com/file/d/1J0lwL9kxlRN-OZNhZHQlcSoHb6S2fc2C/view?usp=drive_link
+      social: 'https://img1.pic.in.th/images/Untitled-design.png', // ← ใส่รูปหน้า Social Media
+      forward: '', // ← ใส่รูปหน้า Forward
+    };
+
+    function applyBannerImages() {
+      const map = {
+        magic: 'bwMagic',
+        social: 'bwSocial',
+        forward: 'bwForward',
+      };
+      for (const [key, elId] of Object.entries(map)) {
+        const el = document.getElementById(elId);
+        if (!el) continue;
+        if (BANNER_IMAGES[key]) {
+          el.style.backgroundImage = `url('${BANNER_IMAGES[key]}')`;
+          el.classList.add('has-bg-image');
+        } else {
+          el.style.backgroundImage = '';
+          el.classList.remove('has-bg-image');
+        }
+      }
+    }
+    /* ════════════════════════════════════════════
+       PAGE 1 — MAGIC TREND
+    ════════════════════════════════════════════ */
+    const SHEET_KW = {
+      Perfect: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmH1u9ExIYGorMUI7PIeeewhAHkc2PcpLZFvYeS-DP1fEc1kdsTIBMcOrv-rZLskXDleWxWG8yxyva/pub?gid=0&single=true&output=csv',
+      Fine: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmH1u9ExIYGorMUI7PIeeewhAHkc2PcpLZFvYeS-DP1fEc1kdsTIBMcOrv-rZLskXDleWxWG8yxyva/pub?gid=173197228&single=true&output=csv',
+      Incredible: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmH1u9ExIYGorMUI7PIeeewhAHkc2PcpLZFvYeS-DP1fEc1kdsTIBMcOrv-rZLskXDleWxWG8yxyva/pub?gid=1893011434&single=true&output=csv',
+      Interesting: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmH1u9ExIYGorMUI7PIeeewhAHkc2PcpLZFvYeS-DP1fEc1kdsTIBMcOrv-rZLskXDleWxWG8yxyva/pub?gid=844129626&single=true&output=csv',
+    };
+    const KW_ICONS = {
+      Perfect: '✨',
+      Fine: '🌸',
+      Incredible: '💫',
+      Interesting: '🌟'
+    };
+    const S = {
+      kwSelected: [],
+      htSelected: [],
+      mtSelected: [],
+      cache: {},
+      lastKw: [],
+      lastHt: [],
+      lastMt: []
+    };
+    async function fetchRows(kw) {
+      if (S.cache[kw]) return S.cache[kw];
+      const res = await fetch(SHEET_KW[kw]);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const rows = (await res.text()).trim().split('\n')
+        .slice(1).map(l => l.split(',')[0].replace(/^"|"$/g, '').trim()).filter(Boolean);
+      if (!rows.length) throw new Error('empty sheet');
+      return (S.cache[kw] = rows);
+    }
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    async function toggleKw(el) {
+      const kw = el.dataset.kw;
+      const idx = S.kwSelected.indexOf(kw);
+      if (idx >= 0) {
+        S.kwSelected.splice(idx, 1);
+        el.classList.remove('selected');
+        updateKwDisable();
+        return;
+      }
+      if (S.kwSelected.length >= 2) {
+        showToast('⚠️ เลือก Keyword ได้สูงสุด 2 อัน');
+        return;
+      }
+      el.classList.add('loading-chip');
+      el.innerHTML = '<span class="chip-spinner"></span> ' + kw;
+      try {
+        await fetchRows(kw);
+        el.textContent = KW_ICONS[kw] + ' ' + kw;
+        el.classList.remove('loading-chip');
+        el.classList.add('selected');
+        S.kwSelected.push(kw);
+        updateKwDisable();
+        showToast('✅ โหลด ' + kw + ' สำเร็จ!');
+      } catch (e) {
+        el.textContent = KW_ICONS[kw] + ' ' + kw;
+        el.classList.remove('loading-chip');
+        updateKwDisable();
+        showToast('❌ โหลด ' + kw + ' ไม่ได้ กรุณาลองใหม่');
+      }
+    }
+
+    function updateKwDisable() {
+      document.querySelectorAll('.chip-kw').forEach(c => {
+        c.classList.toggle('disabled', !S.kwSelected.includes(c.dataset.kw) && S.kwSelected.length >= 2);
+      });
+    }
+
+    function toggleChip(el, type) {
+      const val = el.dataset.val;
+      const arr = type === 'ht' ? S.htSelected : S.mtSelected;
+      const idx = arr.indexOf(val);
+      if (idx >= 0) {
+        arr.splice(idx, 1);
+        el.classList.remove('selected');
+      } else {
+        arr.push(val);
+        el.classList.add('selected');
+      }
+    }
+    async function buildText(kws, hts, mts) {
+      const kwLines = [];
+      for (const kw of kws) kwLines.push(pickRandom(S.cache[kw] || await fetchRows(kw)));
+      const htLine = hts.join(' '),
+        mtLine = mts.join(' ');
+      const parts = [];
+      if (kwLines.length) parts.push(kwLines.join('\n'));
+      if (kwLines.length && (htLine || mtLine)) parts.push('');
+      if (htLine) parts.push(htLine);
+      if (mtLine) parts.push(mtLine);
+      return parts.join('\n');
+    }
+
+    function setResult(text) {
+      document.getElementById('resultBox').value = text;
+      document.getElementById('charCount').textContent = text.length + ' chars';
+    }
+
+    function setRunLoading(on) {
+      document.getElementById('runIconWrap').innerHTML = on ? '<span class="btn-spinner"></span>' : '✨';
+      document.getElementById('btnRun').disabled = on;
+    }
+    async function runMagic() {
+      if (!S.kwSelected.length && !S.htSelected.length && !S.mtSelected.length) {
+        showToast('⚠️ เลือก Keyword, Hashtag หรือ Mention ก่อนนะคะ');
+        return;
+      }
+      setRunLoading(true);
+      try {
+        const text = await buildText([...S.kwSelected], [...S.htSelected], [...S.mtSelected]);
+        S.lastKw = [...S.kwSelected];
+        S.lastHt = [...S.htSelected];
+        S.lastMt = [...S.mtSelected];
+        setResult(text);
+        showToast('✨ สร้าง Magic Trend สำเร็จ!');
+      } catch (e) {
+        showToast('❌ เกิดข้อผิดพลาด กรุณาลองใหม่');
+      } finally {
+        setRunLoading(false);
+      }
+    }
+    async function runNew() {
+      if (!S.lastKw.length && !S.lastHt.length && !S.lastMt.length) {
+        showToast('⚠️ กด Run ก่อนนะคะ 🌸');
+        return;
+      }
+      try {
+        setResult(await buildText(S.lastKw, S.lastHt, S.lastMt));
+        showToast('🔄 สุ่มใหม่แล้ว!');
+      } catch (e) {
+        showToast('❌ โหลดข้อมูลไม่ได้');
+      }
+    }
+
+    function copyResult() {
+      const val = document.getElementById('resultBox').value;
+      if (!val) {
+        showToast('⚠️ ไม่มีข้อความให้ Copy');
+        return;
+      }
+      const fallback = () => {
+        const box = document.getElementById('resultBox');
+        box.removeAttribute('readonly');
+        box.select();
+        document.execCommand('copy');
+        box.setAttribute('readonly', '');
+        showToast('📋 Copy สำเร็จ!');
+      };
+      if (navigator.clipboard?.writeText) navigator.clipboard.writeText(val).then(() => showToast('📋 Copy สำเร็จ!')).catch(fallback);
+      else fallback();
+    }
+
+    function clearAll() {
+      S.kwSelected = [];
+      S.htSelected = [];
+      S.mtSelected = [];
+      S.lastKw = [];
+      S.lastHt = [];
+      S.lastMt = [];
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected', 'disabled', 'loading-chip'));
+      document.querySelectorAll('.chip-kw').forEach(c => {
+        c.textContent = KW_ICONS[c.dataset.kw] + ' ' + c.dataset.kw;
+      });
+      setResult('');
+      showToast('🗑 ล้างข้อมูลแล้ว');
+    }
+    document.getElementById('resultBox').addEventListener('input', function() {
+      document.getElementById('charCount').textContent = this.value.length + ' chars';
+    });
+    /* ─── POST TO TWITTER ─── */
+    function postToTwitter() {
+      const val = document.getElementById('resultBox').value.trim();
+      if (!val) {
+        showToast('⚠️ กด Run ก่อนเพื่อสร้างข้อความนะคะ');
+        return;
+      }
+      // Copy text first
+      const doCopy = (then) => {
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(val).then(then).catch(() => {
+            const box = document.getElementById('resultBox');
+            box.removeAttribute('readonly');
+            box.select();
+            document.execCommand('copy');
+            box.setAttribute('readonly', '');
+            then();
+          });
+        } else {
+          const box = document.getElementById('resultBox');
+          box.removeAttribute('readonly');
+          box.select();
+          document.execCommand('copy');
+          box.setAttribute('readonly', '');
+          then();
+        }
+      };
+      doCopy(() => {
+        showToast('📋 Copy แล้ว! กำลังเปิด Twitter…');
+        // Twitter intent URL with text pre-filled (up to 280 chars for safety)
+        const tweetText = encodeURIComponent(val.substring(0, 280));
+        setTimeout(() => {
+          window.open('https://twitter.com/intent/tweet?text=' + tweetText, '_blank');
+        }, 400);
+      });
+    }
+    /* ════════════════════════════════════════════
+       PAGE 2 — SOCIAL MEDIA
+    ════════════════════════════════════════════ */
+    const PLATFORMS = [{
+        id: 'ig',
+        label: 'Instagram',
+        icon: '<i class="fa-brands fa-instagram" style="color: rgb(255, 44, 105);"></i>',
+        cls: 'p-ig'
+      },
+      {
+        id: 'tt',
+        label: 'TikTok',
+        icon: '<i class="fa-brands fa-tiktok" style="color: rgb(0, 0, 0);"></i>',
+        cls: 'p-tt'
+      },
+      {
+        id: 'tw',
+        label: 'Twitter',
+        icon: '<i class="fa-brands fa-x-twitter" style="color: rgb(0, 0, 0);"></i>',
+        cls: 'p-tw'
+      },
+      {
+        id: 'fb',
+        label: 'Facebook',
+        icon: '<i class="fa-brands fa-square-facebook" style="color: rgb(16, 75, 255);"></i>',
+        cls: 'p-fb'
+      },
+      {
+        id: 'yt',
+        label: 'YouTube',
+        icon: '<i class="fa-brands fa-youtube" style="color: rgb(248, 17, 17);"></i>',
+        cls: 'p-yt'
+      },
+      {
+        id: 'art',
+        label: 'Article',
+        icon: '<i class="fa-solid fa-newspaper" style="color: rgb(102, 102, 102);"></i>',
+        cls: 'p-art'
+      },
+    ];
+    const DEFAULT_MEME = {
+      focus: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      ig: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      tt: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      tw: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      fb: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      yt: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      art: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg',
+      all: 'https://img2.pic.in.th/images81d6d53a8cb6a225.jpg'
+    };
+    const storage = {
+      get(k, fb = '{}') {
+        try {
+          return localStorage.getItem(k) || fb;
+        } catch (e) {
+          return fb;
+        }
+      },
+      set(k, v) {
+        try {
+          localStorage.setItem(k, v);
+        } catch (e) {}
+      }
+    };
+    let socialLoaded = false;
+    const D = {
+      focus: [],
+      ig: [],
+      tt: [],
+      tw: [],
+      fb: [],
+      yt: [],
+      art: [],
+      checked: JSON.parse(storage.get('sm_checked', '{}')),
+      filter: 'all',
+    };
+    /* seedDemo removed */
+    function splitCSVLine(line) {
+      const r = [];
+      let cur = '';
+      let inQ = false;
+      for (const c of line) {
+        if (c === '"') {
+          inQ = !inQ;
+        } else if (c === ',' && !inQ) {
+          r.push(cur);
+          cur = '';
+        } else cur += c;
+      }
+      r.push(cur);
+      return r;
+    }
+
+    function parseSheetCSV(csv, pid) {
+      const lines = csv.trim().split('\n');
+      if (lines.length < 2) return [];
+      const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim().toLowerCase());
+      return lines.slice(1).map((line, i) => {
+        const vals = splitCSVLine(line);
+        const obj = {
+          id: pid + '_' + i,
+          platform: pid
+        };
+        headers.forEach((h, hi) => {
+          obj[h] = (vals[hi] || '').replace(/"/g, '').trim();
+        });
+        obj.title = obj.title || obj.label || obj.name || `Post ${i+1}`;
+        obj.subtitle = obj.subtitle || obj.title2 || obj.sub || '';
+        obj.link = obj.link || obj.url || '#';
+        obj.image_url = obj.image_url || obj.image || obj.img || obj.thumbnail || '';
+        obj.meme_url = obj.meme_url || obj.meme || '';
+        obj.likes = parseInt(obj.likes) || parseInt(obj.like) || 0;
+        obj.comments = parseInt(obj.comments) || parseInt(obj.comment) || 0;
+        obj.shares = parseInt(obj.shares) || parseInt(obj.share) || 0;
+        return obj;
+      }).filter(r => r.title);
+    }
+    async function fetchSheet(url, pid) {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return parseSheetCSV(await r.text(), pid);
+    }
+    const SHEET_SM = {
+      focus: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=341155482&single=true&output=csv',
+      ig: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=0&single=true&output=csv',
+      tt: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=533356148&single=true&output=csv',
+      tw: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=479509441&single=true&output=csv',
+      fb: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=756239740&single=true&output=csv',
+      yt: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=1601656854&single=true&output=csv',
+      art: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLS9wx1mTfQ3scoEdKOL3TwT9n8vR_Wt1LqwyUuW4wxGqtRoF-FtA_fKRzy3pzc-wl6nNx5ooejYNq/pub?gid=1341677075&single=true&output=csv',
+    };
+
+    function showLoadingOverlay() {
+      const ov = document.getElementById('loadingOverlay');
+      ov.classList.add('show');
+      document.getElementById('loadingBar').style.width = '0%';
+      document.getElementById('loadingSubText').innerHTML = 'กำลังดึงข้อมูลจาก…<br>กรุณารอสักครู่นะคะ 🌸';
+    }
+
+    function hideLoadingOverlay() {
+      const ov = document.getElementById('loadingOverlay');
+      ov.classList.remove('show');
+    }
+
+    function setLoadingProgress(pct, msg) {
+      document.getElementById('loadingBar').style.width = pct + '%';
+      if (msg) document.getElementById('loadingSubText').innerHTML = msg;
+    }
+    async function loadAllSheets() {
+      showLoadingOverlay();
+      const keys = Object.keys(SHEET_SM).filter(k => SHEET_SM[k] && !SHEET_SM[k].includes('PASTE'));
+      const total = keys.length;
+      let loaded = 0;
+      for (const id of keys) {
+        const url = SHEET_SM[id];
+        const pct = Math.round((loaded / total) * 85);
+        setLoadingProgress(pct, `กำลังโหลด <strong>${id.toUpperCase()}</strong>… (${loaded+1}/${total}) 🌸`);
+        try {
+          D[id] = await fetchSheet(url, id);
+          loaded++;
+        } catch (e) {
+          console.warn('โหลด ' + id + ' ไม่ได้:', e.message);
+        }
+      }
+      setLoadingProgress(100, loaded > 0 ?
+        `✅ โหลดสำเร็จ!` :
+        '⚠️ โหลดไม่ได้ กรุณาลองใหม่');
+      await new Promise(r => setTimeout(r, 600));
+      hideLoadingOverlay();
+      renderAll();
+      if (loaded > 0) showToast('✅ โหลดข้อมูลสำเร็จ ! ');
+    }
+
+    function renderAll() {
+      renderSummary();
+      renderFocus();
+      renderFeed();
+    }
+
+    function renderSummary() {
+      const grid = document.getElementById('summaryGrid');
+      const all = getAllItems();
+      const allDone = all.filter(it => D.checked[it.id]).length;
+      let html = sumCardHTML('all', '<i class="fa-brands fa-buffer" style="color: rgb(238, 125, 178);"></i>', 'ทั้งหมด', all.length, allDone);
+      PLATFORMS.forEach(p => {
+        const items = D[p.id] || [];
+        const done = items.filter(it => D.checked[it.id]).length;
+        html += sumCardHTML(p.id, p.icon, p.label, items.length, done);
+      });
+      grid.innerHTML = html;
+      grid.querySelectorAll('.sum-card').forEach(c => {
+        c.addEventListener('click', () => {
+          const f = c.dataset.filter;
+          setFilter(f, document.querySelector(`.filter-btn[data-filter="${CSS.escape(f)}"]`));
+          document.getElementById('feedLabel').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+      });
+      highlightActiveSum();
+    }
+
+    function sumCardHTML(id, icon, label, total, done) {
+      const pct = total > 0 ? Math.round(done / total * 100) : 0;
+      return `<div class="sum-card" data-filter="${id}"><div class="sum-icon">${icon}</div><div class="sum-num">${done}/${total}</div><div class="sum-label">${label}</div><div class="sum-done">${pct}%</div></div>`;
+    }
+
+    function highlightActiveSum() {
+      document.querySelectorAll('.sum-card').forEach(c => c.classList.toggle('active', c.dataset.filter === D.filter));
+    }
+
+    function renderFocus() {
+      const list = document.getElementById('focusList');
+      list.innerHTML = D.focus.length ? D.focus.map(focusCardHTML).join('') : emptyHTML('ยังไม่มี Focus Posts', '⭐');
+    }
+
+    function focusCardHTML(item) {
+      const pl = PLATFORMS.find(p => p.id === item.platform) || {
+        icon: '⭐',
+        label: 'Focus',
+        cls: 'p-ig'
+      };
+      const chk = !!D.checked[item.id];
+      const hasImg = !!(item.image_url && item.image_url !== '');
+      const hasLink = !!(item.link && item.link !== '#' && item.link !== '');
+      const thumb = hasImg ?
+        `<img class="focus-img" src="${escAttr(item.image_url)}" alt="" data-fallback-icon="${escAttr(pl.icon)}" data-fallback-cls="${escAttr(pl.cls)}" onerror="imgFallback(this,'focus')">` :
+        `<div class="focus-img-placeholder ${pl.cls}">${pl.icon}</div>`;
+      return `<div class="focus-card ${chk?'checked':''}" id="fc_${item.id}">
+    <div class="focus-badge">⭐ FOCUS • ${pl.icon} ${pl.label}</div>
+    <div class="focus-top">${thumb}
+      <div class="focus-titles">
+        <div class="focus-title ${chk?'done':''}">${escHtml(item.title)}</div>
+        ${item.subtitle?`<div class="focus-subtitle">${escHtml(item.subtitle)}</div>`:''}
+      </div>
+      <div class="focus-right">
+        ${hasLink?`<a class="post-link-btn" href="${escAttr(item.link)}" target="_blank" rel="noopener">🔗</a>`:''}
+        <div class="post-checkbox ${chk?'done':''}" data-id="${item.id}" data-platform="focus" data-meme="${escAttr(item.meme_url)}" data-is-focus="1" onclick="handleCheckClick(this)">${chk?'✓':''}</div>
+      </div>
+    </div>
+    <div class="focus-bottom"><div class="focus-stats-group">
+      <div class="stat-item">❤️ ${fmtNum(item.likes)}</div>
+      <div class="stat-item">💬 ${fmtNum(item.comments)}</div>
+      <div class="stat-item">🔁 ${fmtNum(item.shares)}</div>
+    </div></div>
+  </div>`;
+    }
+
+    function postCardHTML(item) {
+      const pl = PLATFORMS.find(p => p.id === item.platform) || {
+        icon: '📌',
+        label: 'Post',
+        cls: 'p-ig'
+      };
+      const chk = !!D.checked[item.id];
+      const hasLink = !!(item.link && item.link !== '#' && item.link !== '');
+      const hasImg = !!(item.image_url && item.image_url !== '');
+      const thumb = hasImg ? `<img class="post-thumb" src="${escAttr(item.image_url)}" alt="" onerror="this.style.display='none'">` : `<div class="post-thumb-placeholder ${pl.cls}">${pl.icon}</div>`;
+      return `<div class="post-card ${chk?'checked':''}" id="pc_${item.id}">
+    <div class="post-row">${thumb}
+      <div class="post-body"><div class="post-label ${chk?'label-done':''}">${escHtml(item.title)}</div></div>
+      <div class="post-right">
+        ${hasLink?`<a class="post-link-btn" href="${escAttr(item.link)}" target="_blank" rel="noopener">🔗</a>`:''}
+        <div class="post-checkbox ${chk?'done':''}" data-id="${item.id}" data-platform="${item.platform}" data-meme="${escAttr(item.meme_url)}" onclick="handleCheckClick(this)">${chk?'✓':''}</div>
+      </div>
+    </div>
+  </div>`;
+    }
+
+    function imgFallback(el, type) {
+      const ph = document.createElement('div');
+      ph.className = (type === 'focus' ? 'focus-img-placeholder ' : 'post-thumb-placeholder ') + (el.dataset.fallbackCls || '');
+      ph.textContent = el.dataset.fallbackIcon || '📌';
+      el.replaceWith(ph);
+    }
+
+    function setFilter(f, btn) {
+      D.filter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderFeed();
+      highlightActiveSum();
+    }
+
+    function renderFeed() {
+      const list = document.getElementById('feedList');
+      const items = sortItems(getFilteredItems());
+      const pName = D.filter === 'all' ? 'ทั้งหมด' : (PLATFORMS.find(p => p.id === D.filter)?.label || D.filter);
+      document.getElementById('feedLabel').innerHTML = `📋 <span>${pName}</span>`;
+      list.innerHTML = items.length ? items.map(postCardHTML).join('') : emptyHTML('ยังไม่มีข้อมูล', '📋');
+      highlightActiveSum();
+      updateFilterBadges();
+    }
+
+    function updateFilterBadges() {
+      document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+        const f = btn.dataset.filter;
+        const items = f === 'all' ? getAllItems() : (D[f] || []);
+        const done = items.filter(it => D.checked[it.id]).length;
+        let badge = btn.querySelector('.fbadge');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'fbadge';
+          btn.appendChild(badge);
+        }
+        badge.textContent = `${done}/${items.length}`;
+      });
+    }
+
+    function handleCheckClick(el) {
+      toggleCheck(el.dataset.id, el.dataset.platform, el.dataset.meme || '', el.dataset.isFocus === '1');
+    }
+
+    function toggleCheck(id, platform, memeUrl, isFocus = false) {
+      D.checked[id] = !D.checked[id];
+      storage.set('sm_checked', JSON.stringify(D.checked));
+      const card = document.getElementById('pc_' + id);
+      if (card) {
+        card.classList.toggle('checked', !!D.checked[id]);
+        setTimeout(() => renderFeed(), 380);
+      } else {
+        renderFeed();
+      }
+      if (isFocus) {
+        const fc = document.getElementById('fc_' + id);
+        if (fc) {
+          const cb = fc.querySelector('.post-checkbox');
+          if (cb) {
+            cb.classList.toggle('done', !!D.checked[id]);
+            cb.textContent = D.checked[id] ? '✓' : '';
+          }
+          fc.classList.toggle('checked', !!D.checked[id]);
+        }
+      }
+      renderSummary();
+      updateFilterBadges();
+      if (D.checked[id]) checkPlatformComplete(platform);
+    }
+
+    function checkPlatformComplete(platform) {
+      const items = platform === 'focus' ? D.focus : (D[platform] || []);
+      if (!items.length || !items.every(it => D.checked[it.id])) return;
+      const mi = items.find(it => it.meme_url && it.meme_url !== '');
+      const pl = PLATFORMS.find(p => p.id === platform);
+      const icon = platform === 'focus' ?
+        '<i class="fa-solid fa-star"></i>' :
+        (pl ? pl.icon : '<i class="fa-solid fa-circle-check"></i>');
+      showPopup(
+        platform === 'focus' ? 'Focus Posts' : (pl ? pl.label : platform),
+        icon,
+        mi ? mi.meme_url : '',
+        platform
+      );
+    }
+
+    function showPopup(label, icon, memeUrl, pid) {
+      document.getElementById('popupTitle').innerHTML = `${icon} ${label} ครบแล้ว!`;
+      document.getElementById('popupSubtitle').textContent = `สุดยอดเลย! ทำ ${label} ครบทุกโพสต์แล้ว 💙`;
+      document.getElementById('popupConfetti').innerHTML = (['<i class="fa-solid fa-star"></i>', '<i class="fa-solid fa-snowflake"></i>', '<i class="fa-solid fa-heart"></i>', '<i class="fa-solid fa-crown"></i>'])[Math.floor(Math.random() * 4)];
+      const wrap = document.getElementById('popupMemeWrap');
+      const fb = DEFAULT_MEME[pid] || DEFAULT_MEME['all'];
+      // ใช้ memeUrl จาก sheet ถ้ามี ไม่งั้นใช้ DEFAULT_MEME
+      const imgSrc = (memeUrl && memeUrl !== '' && memeUrl !== '#') ? memeUrl : fb;
+      const img = document.createElement('img');
+      img.className = 'popup-meme';
+      img.src = imgSrc;
+      img.alt = label;
+      img.onerror = () => {
+        // ถ้าโหลดรูปไม่ได้ ลอง fallback อีกครั้ง
+        if (img.src !== fb && fb !== imgSrc) {
+          img.src = fb;
+        } else {
+          // ถ้า fallback ก็โหลดไม่ได้ แสดง FA icon แทน
+          const d = document.createElement('div');
+          d.className = 'popup-meme-emoji';
+          d.style.fontSize = '60px';
+          d.innerHTML = icon;
+          img.replaceWith(d);
+        }
+      };
+      wrap.innerHTML = '';
+      wrap.appendChild(img);
+      document.getElementById('popupOverlay').classList.add('show');
+      fireConfetti();
+    }
+
+    function closePopup() {
+      document.getElementById('popupOverlay').classList.remove('show');
+    }
+
+    function fireConfetti() {
+      const ov = document.getElementById('popupOverlay');
+      ov.querySelectorAll('.confetti-piece').forEach(e => e.remove());
+      const em = ['💙', '✨', '💕', '❄️', '⭐', '💫', '🌸', '🎀'];
+      for (let i = 0; i < 18; i++) {
+        const el = document.createElement('span');
+        el.className = 'confetti-piece';
+        el.textContent = em[i % em.length];
+        el.style.cssText = `position:fixed;left:${10+Math.random()*80}%;top:${-5+Math.random()*10}%;font-size:${14+Math.random()*14}px;animation:confettiFall ${1.2+Math.random()*1.4}s ease-out ${Math.random()*.6}s forwards;pointer-events:none;z-index:600;`;
+        ov.appendChild(el);
+      }
+      setTimeout(() => ov.querySelectorAll('.confetti-piece').forEach(e => e.remove()), 2500);
+    }
+
+    function getAllItems() {
+      return PLATFORMS.flatMap(p => D[p.id] || []);
+    }
+
+    function getFilteredItems() {
+      return D.filter === 'all' ? getAllItems() : (D[D.filter] || []);
+    }
+
+    function sortItems(items) {
+      return [...items].sort((a, b) => (D.checked[a.id] ? 1 : 0) - (D.checked[b.id] ? 1 : 0));
+    }
+
+    function fmtNum(n) {
+      n = parseInt(n) || 0;
+      if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+      if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+      return n + '';
+    }
+
+    function escHtml(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function escAttr(s) {
+      return String(s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function emptyHTML(msg, icon) {
+      return `<div class="empty-state"><div class="empty-state-icon">${icon}</div><div class="empty-state-text">${msg}</div></div>`;
+    }
+    /* ════════════════════════════════════════════
+       PAGE 3 — FORWARD
+    ════════════════════════════════════════════ */
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmp3tmGX0Pm8ApnOIPjXwhQqzZ72UtliLOmwDtj0TxfV2Z4LXTbMbcMdeZvsQjK7vI/exec';
+
+    function toggleCat(el) {
+      document.querySelectorAll('.cat-chip').forEach(c => {
+        c.classList.remove('selected');
+        c.querySelector('input').checked = false;
+        c.querySelector('.cat-check').textContent = '';
+      });
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+      el.querySelector('.cat-check').textContent = '✓';
+    }
+
+    function getSelectedCat() {
+      const s = document.querySelector('.cat-chip.selected');
+      return s ? s.querySelector('input').value : '';
+    }
+
+    function updateCharHint(inputId, hintId, max) {
+      const len = document.getElementById(inputId).value.length;
+      const hint = document.getElementById(hintId);
+      hint.textContent = len.toLocaleString() + ' / ' + max.toLocaleString();
+      hint.style.color = len >= max * .9 ? '#3b82d6' : 'var(--text-soft)';
+    }
+
+    function setSubmitLoading(on) {
+      document.getElementById('submitIconWrap').innerHTML = on ? '<span class="btn-spinner"></span>' : '💌';
+      document.getElementById('btnSubmit').disabled = on;
+    }
+    async function submitForm() {
+      const name = document.getElementById('senderName').value.trim();
+      const msg = document.getElementById('msgText').value.trim();
+      const cats = getSelectedCat();
+      if (!name) {
+        showToast('⚠️ กรุณาใส่ชื่อผู้ส่งด้วยนะคะ');
+        document.getElementById('senderName').focus();
+        return;
+      }
+      if (!msg) {
+        showToast('⚠️ กรุณาใส่ข้อความก่อนส่งค่ะ');
+        document.getElementById('msgText').focus();
+        return;
+      }
+      if (!cats) {
+        showToast('⚠️ กรุณาเลือกหมวดหมู่ด้วยนะคะ');
+        return;
+      }
+      setSubmitLoading(true);
+      const timestamp = new Date().toLocaleDateString('th-TH', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      try {
+        if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+          await new Promise(r => setTimeout(r, 1200));
+          showSuccess();
+          return;
+        }
+        const form = new FormData();
+        form.append('name', name);
+        form.append('message', msg);
+        form.append('category', cats);
+        form.append('timestamp', timestamp);
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: form
+        });
+        showSuccess();
+      } catch (e) {
+        showToast('❌ ส่งไม่ได้ กรุณาลองใหม่อีกครั้งค่ะ');
+        setSubmitLoading(false);
+      }
+    }
+
+    function showSuccess() {
+      document.getElementById('formFields').style.display = 'none';
+      document.getElementById('successBox').classList.add('show');
+      fwFireConfetti();
+    }
+
+    function resetForm() {
+      document.getElementById('senderName').value = '';
+      document.getElementById('msgText').value = '';
+      document.getElementById('nameHint').textContent = '0 / 80';
+      document.getElementById('msgHint').textContent = '0 / 1,000';
+      document.querySelectorAll('.cat-chip').forEach(el => {
+        el.classList.remove('selected');
+        el.querySelector('input').checked = false;
+        el.querySelector('.cat-check').textContent = '';
+      });
+      setSubmitLoading(false);
+      document.getElementById('formFields').style.display = '';
+      document.getElementById('successBox').classList.remove('show');
+    }
+
+    function fwFireConfetti() {
+      const em = ['💙', '✨', '💕', '❄️', '🎀', '⭐', '💫', '🌸', '🎊'];
+      for (let i = 0; i < 22; i++) {
+        const el = document.createElement('span');
+        el.textContent = em[i % em.length];
+        el.style.cssText = `position:fixed;left:${5+Math.random()*90}%;top:-20px;font-size:${14+Math.random()*16}px;animation:confettiFall ${1.4+Math.random()*1.2}s ease-out ${Math.random()*.8}s forwards;pointer-events:none;z-index:999;`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+      }
+    }
+    /* ════ INIT ════ */
+    applyBannerImages();
+  </script>
+
+  <!-- ══ LOADING OVERLAY ══ -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-box">
+      <div class="loading-ring">
+        <div class="loading-ring-inner"></div>
+        <div class="loading-icon">❄️</div>
+      </div>
+      <div class="loading-title">กำลังโหลดข้อมูล</div>
+      <div class="loading-sub" id="loadingSubText">กำลังดึงข้อมูล…<br>กรุณารอสักครู่นะคะ 🌸</div>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loadingBar"></div>
+      </div>
+      <div class="loading-dots">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
